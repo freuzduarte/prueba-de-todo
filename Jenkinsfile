@@ -16,7 +16,7 @@ pipeline {
                 -Dsonar.language=java \
                 -Dsonar.java.binaries=./target/classes \
                 -Dsonar.host.url=http://192.168.26.129:9000 \
-                -Dsonar.login=${env.TOKENSONAR}'''
+                -Dsonar.login=${TOKENSONAR}'''
             }
         }
         stage('Build') {
