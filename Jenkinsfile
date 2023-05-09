@@ -1,6 +1,6 @@
 pipeline {
     agent any
-        environments {
+        environment {
             TOKENSONAR = 'squ_27920b448c22c6ca53d7dbae57a0b707c5113d7e'
         }
         stages {
