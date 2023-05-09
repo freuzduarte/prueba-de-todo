@@ -1,5 +1,8 @@
 pipeline {
     agent any
+        environments {
+            TOKENSONAR = 'squ_27920b448c22c6ca53d7dbae57a0b707c5113d7e'
+        }
         stages {
         stage('Initialize') {
             steps {
@@ -16,7 +19,7 @@ pipeline {
                 -Dsonar.language=java \
                 -Dsonar.java.binaries=./target/classes \
                 -Dsonar.host.url=http://192.168.26.129:9000 \
-                -Dsonar.login=squ_27920b448c22c6ca53d7dbae57a0b707c5113d7e'''
+                -Dsonar.login=${TOKENSONAR}'''
             }
         }
         stage('Build') {
