@@ -26,6 +26,7 @@ pipeline {
             steps {
                 script {
                     timeout(time: 5, unit: 'MINUTES') {
+                        print "Finished waiting"
                         waitForQualityGate(abortPipeline: true)
                         def qg = waitForQualityGate()
                         if (qg.status != 'OK') {
