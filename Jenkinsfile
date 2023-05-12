@@ -8,9 +8,9 @@ pipeline {
         }
         stage('Sonarcan') {
             steps {
-                withSonarQubeEnv('SonarQube servers') {
+                withSonarQubeEnv('sonarqubescanner') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                    echo 'Sonarqube dentro de sonarcan blablabla'
+                    echo 'Sonarqube dentro de sonarscan bla bla bla'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
                 // -Dsonar.projectName=prueba-de-todo \
                 // -Dsonar.projectKey=prueba-de-todo \
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Qualitygate') {
             steps {
-                waitForQualityGate (webhookSecretId: 'sonarqube', abortPipeline: true)
+                waitForQualityGate(webhookSecretId: 'sonarqube', abortPipeline: true)
             }
         }
         // stage('Build') {
