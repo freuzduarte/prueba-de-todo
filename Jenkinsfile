@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqubescanner') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                    echo 'Sonarqube dentro de sonarscan bla bla bla'
+                    print 'Sonarqube dentro de sonarscan bla bla bla'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
                 // -Dsonar.projectName=prueba-de-todo \
                 // -Dsonar.projectKey=prueba-de-todo \
