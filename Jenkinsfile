@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                   sh ''' ./gradlew sonarqube \
+                   sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
                 -Dsonar.projectName=prueba-de-todo \
                 -Dsonar.projectKey=prueba-de-todo \
                 -Dsonar.projectVersion=1 \
