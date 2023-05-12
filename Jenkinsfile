@@ -9,19 +9,16 @@ pipeline {
         stage('Sonarcan') {
             steps {
                 withSonarQubeEnv('sonarqubeserver') {
-                    // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                    // sh 'mvn clean package sonar:sonar'
                     echo 'Sonarqube dentro de sonarscan bla bla bla'
-                    sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner'''
-                //     sh '''${scannerHome}/bin/sonar-scanner \
-                // -Dsonar.projectName=prueba-de-todo \
-                // -Dsonar.projectKey=prueba-de-todo \
-                // -Dsonar.projectVersion=1 \
-                // -Dsonar.sources=src/main/java/ \
-                // -Dsonar.language=java \
-                // -Dsonar.java.binaries=./target/classes \
-                // -Dsonar.host.url=http://192.168.26.129:9000 \
-                // -Dsonar.login=${TOKENSONAR}'''
+                    sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
+                    -Dsonar.projectName=prueba-de-todo \
+                    -Dsonar.projectKey=prueba-de-todo \
+                    -Dsonar.projectVersion=1 \
+                    -Dsonar.sources=src/main/java/ \
+                    -Dsonar.language=java \
+                    -Dsonar.java.binaries=./target/classes \
+                    -Dsonar.host.url=http://192.168.26.129:9000 \
+                    -Dsonar.login=${TOKENSONAR}'''
                 }
             }
         }
