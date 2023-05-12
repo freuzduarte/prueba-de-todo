@@ -12,7 +12,7 @@ pipeline {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
                     // sh 'mvn clean package sonar:sonar'
                     sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner'''
-                    print 'Sonarqube dentro de sonarscan bla bla bla'
+                    echo 'Sonarqube dentro de sonarscan bla bla bla'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
                 // -Dsonar.projectName=prueba-de-todo \
                 // -Dsonar.projectKey=prueba-de-todo \
