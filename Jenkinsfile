@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Sonarcan') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('sonarqubescanner') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
                    sh '''${scannerHome}/bin/sonar-scanner \
                 -Dsonar.projectName=prueba-de-todo \
