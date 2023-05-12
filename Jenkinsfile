@@ -29,7 +29,7 @@ pipeline {
                         print 'Finished waiting'
                         def qualitygate  = waitForQualityGate()
                         if (qualitygate.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                            error "Pipeline aborted due to quality gate failure: ${qualitygate.status}"
                         }
                         waitForQualityGate(abortPipeline: true)
                     }
