@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Qualitygate') {
             steps {
-                waitForQualityGate webhookSecretId: 'sonarqube' waitForQualityGate abortPipeline: true
+                waitForQualityGate (webhookSecretId: 'sonarqube', abortPipeline: true)
             }
         }
         // stage('Build') {
