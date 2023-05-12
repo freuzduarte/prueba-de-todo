@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Sonarcan') {
             steps {
-                withSonarQubeEnv('sonarqubescanner') {
+                withSonarQubeEnv('SonarQube servers') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
                     echo 'Sonarqube'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
