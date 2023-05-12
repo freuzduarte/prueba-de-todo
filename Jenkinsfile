@@ -28,6 +28,9 @@ pipeline {
                     timeout(time: 5, unit: 'MINUTES') {
                         print 'Finished waiting'
                         def qualitygate  = waitForQualityGate()
+                         if (qualitygate.status == 'OK') {
+                            error "Completado ${qualitygate.status}"
+                        }
                         if (qualitygate.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qualitygate.status}"
                         }
