@@ -26,9 +26,8 @@ pipeline {
             steps {
                 script {
                     timeout(time: 5, unit: 'MINUTES') {
-                        print 'Finished waiting'
                         def qualitygate  = waitForQualityGate()
-                         if (qualitygate.status == 'OK') {
+                         if (qualitygate.status = 'OK') {
                             error "Completado ${qualitygate.status}"
                         }
                         if (qualitygate.status != 'OK') {
