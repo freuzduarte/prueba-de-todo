@@ -8,7 +8,9 @@ pipeline {
         }
         stage('Sonarcan') {
             steps {
-                sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
+                withSonarQubeEnv('SonarQube') {
+                    // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
+                   sh ''' ./gradlew sonarqube \
                 -Dsonar.projectName=prueba-de-todo \
                 -Dsonar.projectKey=prueba-de-todo \
                 -Dsonar.projectVersion=1 \
@@ -17,6 +19,7 @@ pipeline {
                 -Dsonar.java.binaries=./target/classes \
                 -Dsonar.host.url=http://192.168.26.129:9000 \
                 -Dsonar.login=${TOKENSONAR}'''
+                }
             }
         }
         stage('Qualitygate') {
