@@ -10,21 +10,23 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqubescanner') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                   sh '''${scannerHome}/bin/sonar-scanner \
-                -Dsonar.projectName=prueba-de-todo \
-                -Dsonar.projectKey=prueba-de-todo \
-                -Dsonar.projectVersion=1 \
-                -Dsonar.sources=src/main/java/ \
-                -Dsonar.language=java \
-                -Dsonar.java.binaries=./target/classes \
-                -Dsonar.host.url=http://192.168.26.129:9000 \
-                -Dsonar.login=${TOKENSONAR}'''
+                    sh "${scannerHome}/bin/sonar-scanner"
+                    echo 'Sonarqube'
+                //     sh '''${scannerHome}/bin/sonar-scanner \
+                // -Dsonar.projectName=prueba-de-todo \
+                // -Dsonar.projectKey=prueba-de-todo \
+                // -Dsonar.projectVersion=1 \
+                // -Dsonar.sources=src/main/java/ \
+                // -Dsonar.language=java \
+                // -Dsonar.java.binaries=./target/classes \
+                // -Dsonar.host.url=http://192.168.26.129:9000 \
+                // -Dsonar.login=${TOKENSONAR}'''
                 }
             }
         }
         stage('Qualitygate') {
             steps {
-                waitForQualityGate abortPipeline: true
+                waitForQualityGate webhookSecretId: 'sonarqube' waitForQualityGate abortPipeline: true
             }
         }
         // stage('Build') {
