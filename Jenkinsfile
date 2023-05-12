@@ -10,6 +10,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqubescanner') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
+                    sh 'mvn clean package sonar:sonar'
                     sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner'''
                     print 'Sonarqube dentro de sonarscan bla bla bla'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
@@ -76,7 +77,7 @@ pipeline {
         always {
             script {
                 echo 'Probando el posts'
-                slackSend(channel: '#actividad-grupal-jenkinsfile', message: " Proyecto Creado Perfectamente *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FF04')
+                slackSend(channel: '#actividad-grupal-jenkinsfile', message: " Haciendo Pruebas con Sonar *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FF04')
             }
         }
     }
