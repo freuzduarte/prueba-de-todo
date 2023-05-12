@@ -26,12 +26,12 @@ pipeline {
             steps {
                 script {
                     timeout(time: 5, unit: 'MINUTES') {
-                        print "Finished waiting"
-                        waitForQualityGate(abortPipeline: true)
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
+                        print 'Finished waiting'
+                        def qualitygate  = waitForQualityGate()
+                        if (qualitygate.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
                         }
+                        waitForQualityGate(abortPipeline: true)
                     }
                 }
             }
@@ -83,7 +83,7 @@ pipeline {
         always {
             script {
                 echo 'Probando el posts'
-                slackSend(channel: '#actividad-grupal-jenkinsfile', message: " Haciendo Pruebas con Sonar *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME} PROBLEMAS ${env.qg.status}", color: '#00FF04', )
+                slackSend(channel: '#actividad-grupal-jenkinsfile', message: " Haciendo Pruebas con Sonar *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME} PROBLEMAS ${qualitygate.status}", color: '#00FF04', )
             }
         }
     }
