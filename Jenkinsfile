@@ -8,9 +8,9 @@ pipeline {
         }
         stage('Sonarcan') {
             steps {
-                withSonarQubeEnv('sonarqubescanner') {
+                withSonarQubeEnv('sonarqubeserver') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                    sh 'mvn clean package sonar:sonar'
+                    // sh 'mvn clean package sonar:sonar'
                     sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner'''
                     print 'Sonarqube dentro de sonarscan bla bla bla'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
