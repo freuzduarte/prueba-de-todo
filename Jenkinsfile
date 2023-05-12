@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        SCANNER_HOME = tool 'sonarqubescanner'
-    }
         stages {
         stage('Initialize') {
             steps {
@@ -13,7 +10,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqubescanner') {
                     // sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner \
-                    sh '''$SCANNER_HOME/bin/sonar-scanner'''
+                    sh '''/var/jenkins_home/sonar-scanner/bin/sonar-scanner'''
                     print 'Sonarqube dentro de sonarscan bla bla bla'
                 //     sh '''${scannerHome}/bin/sonar-scanner \
                 // -Dsonar.projectName=prueba-de-todo \
