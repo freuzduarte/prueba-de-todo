@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     timeout(time: 5, unit: 'MINUTES') {
-                        waitForQualityGate abortPipeline: true
+                        waitForQualityGate(abortPipeline: true)
                         if (waitForQualityGate == 'OK') {
                             echo 'ESTO ES UNA PRUEBA DE FALLO'
                         }
