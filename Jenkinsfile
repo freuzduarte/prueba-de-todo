@@ -29,8 +29,8 @@ pipeline {
                         def qualitygate  = waitForQualityGate()
                         if (qualitygate.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qualitygate.status}"
-                            slackSend(channel: '#actividad-grupal-jenkinsfile', message: 'Probando Calidad del Codigo')
                         }
+                        slackSend(channel: '#actividad-grupal-jenkinsfile', message: "Probando Calidad del Codigo, ${qualitygate.status}")
                         waitForQualityGate(abortPipeline: true)
                     }
                 }
